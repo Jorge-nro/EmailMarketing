@@ -31,6 +31,73 @@
         small {
             margin: 10px;
         }
+
+        .botao {
+        position: relative;
+        cursor:pointer;
+        transition: 0.2s;
+        }
+
+        .textoNormal,
+        .botaoBugad {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        }
+
+        .textoNormal {
+        opacity: 1;
+        z-index: 2;
+        }
+
+        .botaoBugad {
+        font-weight: 700;
+        color: red;
+        opacity: 0;
+        z-index: 1;
+        }
+
+        .botao:hover .textoNormal {
+        opacity: 0;
+        }
+
+        .botao:hover .botaoBugad {
+        opacity: 1;
+        z-index: 2;
+        animation: glitchFlicker 0.3s alternate infinite;
+        }
+
+        @keyframes glitchFlicker {
+        0%   { 
+            opacity: 0; transform: translate(-50%, -50%) translateY(0);
+        }
+        10%   { 
+            opacity: 0; transform: translate(-50%, -50%) translateY(0);
+        }
+        20%  { 
+            opacity: 1; transform: translate(-50%, -50%) translateY(-1px);
+        }
+        30%  { 
+            opacity: 0; transform: translate(-50%, -50%) translateY(-1px);
+        }
+        40%  { 
+            opacity: 0; transform: translate(-50%, -50%) translateY(1px);
+        }
+        50%  { 
+            opacity: 1; transform: translate(-50%, -50%) translateY(1px);
+        }
+        60%  { 
+            opacity: 1; transform: translate(-50%, -50%) translateY(0);
+        }
+        80%  { 
+            opacity: 0; transform: translate(-50%, -50%) translateY(2px); 
+        }
+        100% { 
+            opacity: 1; transform: translate(-50%, -50%) translateY(0); 
+        }
+        }
     </style>
 </head>
 <body>
@@ -50,6 +117,9 @@
 </p>
 </div>
 <small>é mentira*</small>
-<small><a style="text-decoration: none;" href="email5.html">Refresh</a></small>
+<small><a class="botao" style="color: transparent;" href="email5.html">.
+            <span style="color: blue;" class="textoNormal">Refresh</span>
+            <span class="botaoBugad" data-text="₩H∆₮₴₳₱₱"><del>Refresh</del></span>
+</a></small>
 </body>
 </html>
